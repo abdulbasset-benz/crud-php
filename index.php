@@ -1,3 +1,24 @@
+<?php
+require_once('connect.php');
+
+
+function displayEmployees($pdo)
+{
+    try {
+        $sql = "SELECT id, nom, prenom, adresse, numero_tel FROM clients";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+
+        $clients = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $clients;
+    } catch (PDOException $e) {
+        die('Error: ' . $e->getMessage());
+    }
+}
+
+$clients = displayEmployees($pdo);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,19 +28,14 @@
     <title>Document</title>
 </head>
 <body>
-    <?php
-    require_once('connect.php');
-
-    
-    ?>
     <form action="" method="post">
         <div class="header">
-            <h1>manage employees</h1>
+            <h1>Manage Employees</h1>
             <div class="btn">
-            <button type="submit"><a href="addEmployees.php">add</a></button>
-            <button type="submit">delete</button>
+                <button type="button" onclick="window.location.href='addEmployees.php';">Add</button>
+                <!-- Assuming you will handle delete functionality separately -->
+                <button type="submit" name="delete">Delete</button>
             </div>
-            
         </div>
         <table>
             <tr>
@@ -29,6 +45,15 @@
                 <th>Adresse</th>
                 <th>Numero de tel.</th>
             </tr>
+            <?php foreach ($clients as $value): ?>
+                <tr>
+                    <td><?= $value['id']; ?></td>
+                    <td><?= $value['nom']; ?></td>
+                    <td><?= $value['prenom']; ?></td>
+                    <td><?= $value['adresse']; ?></td>
+                    <td><?= $value['numero_tel']; ?></td>
+                </tr>
+            <?php endforeach; ?>
         </table>
     </form>
 </body>
