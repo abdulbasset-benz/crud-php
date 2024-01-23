@@ -54,7 +54,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Document</title>
 </head>
 <body>
-    <h1>Add Employees</h1>
+    <div class="container">
+        <div class="logo"><a href="index.php"><img src="img/logo.png" alt=""></a></div>
+        <div class="list-items">
+            <ul>
+                <li><a href="index.php">home page</a></li>
+                <li><a href="addEmployees.php">manage employees</a></li>
+            </ul>
+        </div>
+    </div>
     <form action="" method="post" class="form">
         <label for="nom">Nom :</label>
         <input type="text" id="nom" name="nom" required>
