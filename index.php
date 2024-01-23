@@ -67,8 +67,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <title>Document</title>
 </head>
 <body>
+    <div class="container">
+        <div class="logo"><a href="index.php"><img src="img/logo.png" alt=""></a></div>
+        <div class="list-items">
+            <ul>
+                <li><a href="index.php">home page</a></li>
+                <li><a href="addEmployees.php">manage employees</a></li>
+            </ul>
+        </div>
+    </div>
     <form action="" method="post">
         <div class="header">
+            
             <h1>Manage Employees</h1>
             <div class="btn">
                 <button type="button" onclick="window.location.href='addEmployees.php';">Add</button>
