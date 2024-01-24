@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
     }
 }
-
+echo time();
 ?>
 
 <!DOCTYPE html>
@@ -68,7 +68,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 </head>
 <body>
     <div class="container">
+    
         <div class="logo"><a href="index.php"><img src="img/logo.png" alt=""></a></div>
+        <form action="">
+            <input type="search" name="search" id="">
+            <button type="submit">Search</button>
+        </form>
         <div class="list-items">
             <ul>
                 <li><a href="index.php">home page</a></li>
